@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda - Contatos : Py</title>
+
+    <link href="../static/css/Bootstrap/bootstrap-select.min.css" rel="stylesheet">
+    <link href="../static/css/Bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/datatables.min.css" rel="stylesheet" />
+    <link href="../static/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../static/css/animate.css" rel="stylesheet" />
+  </head>
+  <body>
+<input type='hidden' id='exibirMensagem' value="{{session['message_tela']}}">
+
+{% set up = {'message_tela' : ''} %}
+{% for key,value in session.items() %}
+  {% if key == 'message_tela' %}
+    {% if session.update(up) %}{% endif %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,110 @@
+{% include 'cabecalho.html' %}
+<div class="container">
+    {% include 'menu.html' %}
+
+    {% set dados = {} %}
+    {% if contato %}
+        {% set dados = contato[0] %}
+    {% endif %}
+
+    <div class="card mt-3 mb-3">
+        <div class="card-header p-1">
+            <h2 class="card-title font-size-15 text-provedor mb-0 p-1 text-center">Agenda - Contato</h2>
+        </div>
+        <div class="card-body p-3">
+            <div class="row pt-3">
+                <div class="col">
+                    <form action="/contato/salvar" method="POST" name="salvarContato" enctype="multipart/form-data">
+                        <input type="hidden" name="form-name" value="cadastro_contato">
+
+                        <input type="hidden" name="codigo" value="{{dados[0]}}">
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="text-muted">Nome:</label>
+                                <input type="text" name="nome" id="nome" class="form-control form-control-sm" value="{{dados[1]}}" required />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="text-muted">E-mail:</label>
+                                <input type="email" name="email" id="email" class="form-control form-control-sm" value="{{dados[2]}}" required />
+                            </div>
+                            <div class="col-auto">
+                                <label class="text-muted">Fone:</label>
+                                <input type="text" name="fone" id="fone" class="form-control form-control-sm mascaraFone" value="{{dados[3]}}" required />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col-auto">
+                                <label class="text-muted">CEP:
+
+                                    <a href="#" class="btn btn-light btn-sm border-0 text-success api-cep-json" title="Buscar API - Json">
+                                        <i class="fa-solid fa-link text-success pointer"
+                                            data-placement="left" data-toggle="tooltip"></i></a>
+
+                                    <a href="#" class="btn btn-light btn-sm border-0 text-warning api-cep-xml" title="Buscar API - XML">
+                                        <i class="fa-solid fa-link text-warning pointer"
+                                            data-placement="left" data-toggle="tooltip"></i></a>
+                                </label>
+                                <input type="text" name="cep" id="cep" class="form-control form-control-sm mascaraCEP" value="{{dados[4]}}" required/>
+                            </div>
+                            <div class="col">
+                                <label class="text-muted">Cidade:</label>
+                                <input type="text" name="cidade" id="cidade" class="form-control form-control-sm" value="{{dados[5]}}" required />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="text-muted">Endereço:</label>
+                                <input type="text" name="endereco" id="endereco" class="form-control form-control-sm" value="{{dados[6]}}" required />
+                            </div>
+                            <div class="col-auto">
+                                <label class="text-muted">Bairro:</label>
+                                <input type="text" name="bairro" id="bairro" class="form-control form-control-sm" value="{{dados[7]}}" required />
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col">
+                                <label class="text-muted">Complemento:</label>
+                                <input type="text" name="complemento" id="complemento" class="form-control form-control-sm" value="{{dados[8]}}" required />
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="diretorio_atual_avatar" value="{% if dados[10] %}{{dados[9]}}{{dados[10]}}{% endif %}">
+
+                        <div class="form-row form-group">
+                            {% if dados[10] %}
+                            <div class="col-auto">
+                                <img src="{{ url_for('static', filename='imagens/'+dados[10]) }}" alt="Avatar Contato" width="90" height="100" id="md-lb-avatar">
+                            </div>
+                            {% endif %}
+                            <div class="col">
+                                <label class="text-muted">Avatar:</label>
+                                <div class="custom-file mb-3">
+                                    <input type="file" class="custom-file-input" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                                    <label class="custom-file-label" name="avatar-label" id="avatar-label" for="avatar">Selecionar o Avatar</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row form-group mb-0 justify-content-between">
+                            <div class="col-auto">
+                                <a href="/contato" class="btn btn-sm btn-outline-secondary px-3" title="Cancelar Cadastro">
+                                    <i class="fa-solid fa-ban pr-1" data-placement="left" data-toggle="tooltip"></i>Cancelar</a>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-sm btn-outline-primary px-3">
+                                    <i class="fa-solid fa-floppy-disk pr-1"></i> Salvar
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'rodape.html' %}

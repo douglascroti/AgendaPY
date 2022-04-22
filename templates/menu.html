@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light py-0 shadow-sm">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item py-1">
+                <a class="nav-link" href="/index">Home</a>
+            </li>
+            <li class="nav-item py-1">
+                <a class="nav-link" href="/contato">Contato</a>
+            </li>
+            <li class="nav-item py-1">
+                <a class="nav-link" href="/usuario/admin">Usuários</a>
+            </li>
+        </ul>
+        {% if session %}
+            <a href="#" class="btn btn-light btn-sm px-4 border-0 font-weight-bold-5 alterarSenhaUsuario">{{session['usuario']}}</a>
+        {% endif %}
+        <a href="/logout" class="btn btn-light btn-sm px-4 border-0 font-weight-bold-5"><i class="fa-solid fa-lock"></i> Sair</a>
+    </div>
+</nav>

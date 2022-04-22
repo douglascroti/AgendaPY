@@ -1,0 +1,36 @@
+{% include 'cabecalho.html' %}
+<div class="container pb-3">
+    <div class="row justify-content-center pt-5 mt-5">
+        <div class="col box-login col-sm-10 col-md-8 col-lg-6 col-xl-4">
+            <div class="row justify-content-center">
+                <div class="col-auto text-center">
+                    <h1 class="mt-3">Agenda - Contatos</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-auto text-center">
+                    <i class="fa-solid fa-calendar-check fa-7x font-size-50 text-muted"></i>
+                    <p class="mt-3">Python + (Flask, Mysql, Bootstrap, Jquery)</p>
+                </div>
+            </div>
+            <form action="" method="POST" name="formLogin">
+                <input type="hidden" name="form-name" value="login">
+                <div class="row justify-content-center">
+                    <div class="col-8 col-xl-10 form-group">
+                        <input type="email" name="login" value="" placeholder="Usuário" class="form-control py-2 px-3" required="true" />
+                    </div>
+                    <div class="col-8 col-xl-10 form-group">
+                        <input type="password" name="senha" value="" placeholder="Senha" class="form-control py-2 px-3" required="true" />
+                    </div>
+                    <div class="col-8 col-xl-10 form-group pt-3">
+                        <button type="submit" class="btn form-control btn-primary" id="btnLogin">Entrar</button>
+                    </div>
+                    <div class="col text-center pt-3 pb-3">
+                        <a href="/usuario" class="btn btn-light btn-sm border-0" title="Novo Usuário">Novo Usuário</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% include 'rodape.html' %}
